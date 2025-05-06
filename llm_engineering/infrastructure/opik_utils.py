@@ -8,7 +8,16 @@ from llm_engineering import settings
 
 
 def configure_opik() -> None:
-    if settings.COMET_API_KEY and settings.COMET_PROJECT:
+    if settings.COMET_API_KEY == "null" and settings.COMET_PROJECT:
+        try:
+            client = OpikConfigurator(use_local=True)
+            default_workspace = client._get_default_workspace()
+        except Exception:
+            logger.warning("Local workspace not found. Setting workspace to None and enabling interactive mode.")
+            default_workspace = None
+
+        os.environ["OPIK_PROJECT_NAME"] = settings.COMET_PROJECT
+    elif settings.COMET_API_KEY and settings.COMET_PROJECT:
         try:
             client = OpikConfigurator(api_key=settings.COMET_API_KEY)
             default_workspace = client._get_default_workspace()

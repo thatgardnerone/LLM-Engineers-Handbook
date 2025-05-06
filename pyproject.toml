@@ -16,7 +16,7 @@ rich = "^13.7.1"
 numpy = "^1.26.4"
 poethepoet = "0.29.0"
 datasets = "^3.0.1"
-torch = "2.2.2"
+torch = "2.7.0"
 
 # Digital data ETL
 selenium = "^4.21.0"
@@ -41,7 +41,7 @@ langchain-community = "^0.2.11"
 # Inference
 fastapi = ">=0.100,<=0.110"
 uvicorn = "^0.30.6"
-opik = "^0.2.2"
+opik = "^1.7.16"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -92,8 +92,8 @@ run-evaluation-pipeline = "poetry run python -m tools.run --no-cache --run-evalu
 # Inference
 call-rag-retrieval-module = "poetry run python -m tools.rag"
 
-run-inference-ml-service = "poetry run uvicorn tools.ml_service:app --host 0.0.0.0 --port 8000 --reload"
-call-inference-ml-service = "curl -X POST 'http://127.0.0.1:8000/rag' -H 'Content-Type: application/json' -d '{\"query\": \"My name is Paul Iusztin. Could you draft a LinkedIn post discussing RAG systems? I am particularly interested in how RAG works and how it is integrated with vector DBs and LLMs.\"}'"
+run-inference-ml-service = "poetry run uvicorn tools.ml_service:app --host 0.0.0.0 --port 8001 --reload"
+call-inference-ml-service = "curl -X POST 'http://127.0.0.1:8001/rag' -H 'Content-Type: application/json' -d '{\"query\": \"My name is Paul Iusztin. Could you draft a LinkedIn post discussing RAG systems? I am particularly interested in how RAG works and how it is integrated with vector DBs and LLMs.\"}'"
 
 # Infrastructure
 ## Local infrastructure
